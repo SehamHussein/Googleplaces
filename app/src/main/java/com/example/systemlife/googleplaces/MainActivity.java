@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telecom.Call;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -43,10 +44,7 @@ Button search;
 search.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
-        String url="https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=13&size=600x300&maptype=roadmap\n" +
-                "&markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318\n" +
-                "&markers=color:red%7Clabel:C%7C40.718217,-73.998284\n" +
-                "&key=AIzaSyBIAa0kYCBEtmt1xWbikqhmq5IzPW5NvXo";
+        String url="https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=500&type=restaurant&keyword=cruise&key=AIzaSyBIAa0kYCBEtmt1xWbikqhmq5IzPW5NvXo";
         executeWebService(url);
     }
 });
@@ -61,14 +59,16 @@ search.setOnClickListener(new View.OnClickListener() {
                     public void onResponse(String response) {
                         // Display the first 500 characters of the response string.
                         //      mTextView.setText("Response is: "+ response.substring(0,500));
+                        Log.d("barka ", "onResponse: "+response);
                         try {
+
                             JSONObject jsonObject = new JSONObject(response);
                             JSONArray jsonArray = jsonObject.getJSONArray("results");
                             //mTextView.setText(jsonArray.toString());
-
-                            final PlacesModel[] movieModel;
-                            movieModel = new Gson().fromJson(jsonArray.toString(), PlacesModel[].class);
-                            PlacesAdapter movieAdapter = new PlacesAdapter(MainActivity.this, movieModel);
+                            Log.d("barka ", "onResponse: "+jsonArray.toString());
+                            final PlacesModel[] placeModel;
+                            placeModel = new Gson().fromJson(jsonArray.toString(), PlacesModel[].class);
+                            PlacesAdapter movieAdapter = new PlacesAdapter(MainActivity.this, placeModel);
                             listPlace.setAdapter(movieAdapter);
                             listPlace.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -84,6 +84,7 @@ search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 //       mTextView.setText("That didn't work!");
+                Log.d("fff", "onErrorResponse: "+error.getMessage());
             }
         });
         queue.add(stringRequest);

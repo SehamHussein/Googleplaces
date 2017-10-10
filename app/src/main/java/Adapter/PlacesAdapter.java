@@ -34,9 +34,9 @@ public class PlacesAdapter extends ArrayAdapter<PlacesModel> {
         PlacesModel placesModel = getItem(position);
 
         ImageView image = (ImageView) convertView.findViewById(R.id.imageView);
-        Picasso.with(getContext()).load("https://maps.googleapis.com/maps/api/staticmap?center=0,0&zoom=1&size=100x100&key=AIzaSyBIAa0kYCBEtmt1xWbikqhmq5IzPW5NvXo" + placesModel.getFormat()).into(image);
+        Picasso.with(getContext()).load("").into(image);
         TextView mapType = (TextView) convertView.findViewById(R.id.textView);
-        mapType.setText(placesModel.getMaptype());
+
 
         return convertView;
     }

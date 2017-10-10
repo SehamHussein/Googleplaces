@@ -50,30 +50,6 @@ public class PlacesModel implements Serializable {
         return address;
     }
 
-    float size;
-    String format,maptype;
-
-    public float getSize() {
-        return size;
-    }
-
-    public void setSize(float size) {
-        this.size = size;
-    }
-
-    public String getFormat() {
-        return format;
-    }
-
-    public void setFormat(String format) {
-        this.format = format;
-    }
-
-    public String getMaptype() {
-        return maptype;
-    }
-
-    public void setMaptype(String maptype) {
-        this.maptype = maptype;
-    }
+    float rating;
+    String photo_reference ,types;
 }

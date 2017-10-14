@@ -41,6 +41,8 @@
 
     <RatingBar
         android:id="@+id/ratingBar"
+        android:isIndicator="true"
+        android:numStars="5"
         android:layout_width="235dp"
         android:layout_height="51dp"
         android:layout_marginLeft="8dp"

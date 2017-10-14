@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.systemlife.googleplaces.R;
@@ -34,9 +35,13 @@ public class PlacesAdapter extends ArrayAdapter<PlacesModel> {
         PlacesModel placesModel = getItem(position);
 
         ImageView image = (ImageView) convertView.findViewById(R.id.imageView);
-        Picasso.with(getContext()).load("").into(image);
+        Picasso.with(getContext()).load(""+placesModel.getPhoto_reference()).into(image);
         TextView mapType = (TextView) convertView.findViewById(R.id.textView);
-
+        mapType.setText(placesModel.getTypes()+"\n"+placesModel.getAddress());
+        RatingBar rating=(RatingBar) convertView.findViewById(R.id.ratingBar);
+        float rate=(float) placesModel.getRating();
+        rate=rate/2;
+        rating.setRating(rate);
 
         return convertView;
     }

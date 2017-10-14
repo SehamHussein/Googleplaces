@@ -1,11 +1,9 @@
 package com.example.systemlife.googleplaces;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.telecom.Call;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,12 +12,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -27,11 +19,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.io.Serializable;
-import java.lang.reflect.GenericArrayType;
 
-import Adapter.PlacesAdapter;
-import Model.PlacesModel;
+import com.example.systemlife.googleplaces.Adapter.PlacesAdapter;
+import com.example.systemlife.googleplaces.Model.PlacesModel;
 import okhttp3.OkHttpClient;
 
 public class MainActivity extends AppCompatActivity {
@@ -120,7 +110,7 @@ OkHttpClient client=new OkHttpClient();
 }
 
 
-
+//https://developers.google.com/places/web-service/photos
 //    void executeWebService(String url) {
 //        RequestQueue queue = Volley.newRequestQueue(this);
 //        // Request a string response from the provided URL.
